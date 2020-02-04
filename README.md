@@ -53,7 +53,8 @@ aplikasi untuk authentifikasi login form menggunakan Json Web Token
         - admin-pages --> `method GET, path /admin-pages/data`
         - admin-pages --> `method GET, path /admin-pages/edit`
         - admin-pages --> `method GET, path /admin-pages/support`
-        
+        - logout --> `method GET, path /`
+
     - model --> `load model database`
     - views --> `tampilan pada user, form login dan pages admin`
 

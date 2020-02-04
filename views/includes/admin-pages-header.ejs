@@ -7,8 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="/css/style.css">
-
-    <title>Document</title>
+    <title>
+        <%= pageTitle %>
+    </title>
 </head>
 
 <body>
@@ -17,12 +18,14 @@
         <div class="sideArea">
             <div class="avatar">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCNOdyoIXDDBztO_GC8MFLmG_p6lZ2lTDh1ZnxSDawl1TZY_Zw" alt="">
-                <div class="avatarName">Welcome,<br>John Doe</div>
+                <div class="avatarName">Welcome,<br>
+                    <%= userName %>
+                </div>
             </div>
             <ul class="sideMenu">
-                <li><a href="#"><span class="fa fa-book"></span>DATA</a></li>
-                <li><a href="#"><span class="fa fa-edit"></span>EDIT</a></li>
-                <li><a href="#"><span class="fa fa-support"></span>SUPPORT</a></li>
+                <li><a href="/admin-pages/data" class="nav-link  <%= hover === 'true' ? 'active' : '' %>"><span class="fa fa-book"></span>DATA</a></li>
+                <li><a href="/admin-pages/edit" class="nav-link <%= hover === 'true' ? 'active' : '' %>"><span class="fa fa-edit"></span>EDIT</a></li>
+                <li><a href="/admin-pages/support" class="nav-link <%= hover === 'true' ? 'active' : '' %> "><span class="fa fa-support"></span>SUPPORT</a></li>
             </ul>
         </div>
         <!--     SIDE AREA -->
@@ -31,18 +34,7 @@
             <nav class="navTop row">
                 <div class="menuIcon fl"><span class="fa fa-bars"></span></div>
                 <div class="account fr">
-                    <div class="name has-submenu"><a href="#">Log Out</a><span class="fa fa-sign-out"></span></div>
+                    <div class="name has-submenu"><a href="/logout">Log Out</a><span class="fa fa-sign-out"></span></div>
                 </div>
             </nav>
             <!-- END NAV -->
-            <!-- CONTAINER  -->
-            <div class="mainContent">
-
-            </div>
-            <!-- END CONTAINER  -->
-            <script src="/js/script.js"></script>
-        </div>
-    </div>
-</body>
-
-</html>

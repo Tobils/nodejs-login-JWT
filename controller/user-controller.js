@@ -1,9 +1,4 @@
-const path = require('../util/path');
-const jwt = require('jsonwebtoken');
-const fs = require('fs');
-const dotenv = require('dotenv').config();
 const jwtExpireSeconds = 300;
-
 
 exports.getLogin = (req, res, next) => {
     res.render('login', {
@@ -14,11 +9,38 @@ exports.getLogin = (req, res, next) => {
 
 
 exports.postLogin = (req, res, next) => {
-    let privateKEY = fs.readFileSync(process.env.private_key, 'utf-8');
-    let token = jwt.sign({ "body": "stuff" }, privateKEY, {
-        algorithm: "HS256",
-        expiresIn: jwtExpireSeconds
+    const token = req.token;
+    res.cookie('token', token, { httpOnly: true, maxAge: jwtExpireSeconds * 1000 });
+    res.render('admin-pages-data', {
+        pageTitle: "Data",
+        userName: req.username,
+        hover: true
     });
-    // res.send(token);
-    res.render('admin-pages');
+}
+
+
+exports.getData = (req, res, next) => {
+    res.render('admin-pages-data', {
+        pageTitle: "Data",
+        userName: req.username,
+        hover: true
+    });
+}
+
+
+exports.getEdit = (req, res, next) => {
+    res.render('admin-pages-edit', {
+        pageTitle: "Edit",
+        userName: req.username,
+        hover: true
+    });
+}
+
+
+exports.getSupport = (req, res, next) => {
+    res.render('admin-pages-support', {
+        pageTitle: "Support",
+        userName: req.username,
+        hover: true
+    });
 }
