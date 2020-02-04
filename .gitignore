@@ -1,3 +1,5 @@
 .ENV
 .DS_Store
 node_modules/
+config/
+.pem

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        <%= pageTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+
+<body>
+    <!-- 
+Practice coding based on this:
+https://dribbble.com/shots/1493728-Simple-Login-Page
+-->
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Bree+Serif:300,400" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
+
+    <h1>
+        <%= contentTitle %>
+    </h1><br>
+
+    <div id="container">
+        <img src="https://bit.ly/2aQB5uu" alt="login icon">
+        <form action="/login" method="post">
+            <input type="text" name="username" class="email-area" placeholder="Username">
+
+            <input type="password" name="password" placeholder="Password">
+
+            <input type="submit" value="Login" class="btn-login">
+        </form>
+    </div>
+</body>
+
+</html>
