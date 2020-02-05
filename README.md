@@ -84,7 +84,8 @@ aplikasi untuk authentifikasi login form menggunakan Json Web Token
             path: '/'
         });
     }
-        ```
+    ```
+
 ---
 ## Structure directory project :
 <p align="center">
@@ -92,8 +93,9 @@ aplikasi untuk authentifikasi login form menggunakan Json Web Token
 <br>
 Gambar 1.1 structure directory
 </p>
----
 
+
+---
 ## Jalankan Browser
 - localhost:3030/
 <p align="center">
