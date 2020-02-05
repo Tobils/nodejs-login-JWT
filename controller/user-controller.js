@@ -2,11 +2,9 @@ const cookiesExpiredSeconds = 300;
 
 // clear cookies at first visit/logout
 exports.getLogin = (req, res, next) => {
-    res.cookie('no-token', { expires: Date.now() });
     res.render('login', {
         pageTitle: "Login",
-        contentTitle: "Selamat Datang",
-        path: '/'
+        contentTitle: "Selamat Datang"
     });
 }
 
@@ -21,6 +19,16 @@ exports.postLogin = (req, res, next) => {
     });
 }
 
+
+exports.getLogOut = (req, res, next) => {
+    const token = req.token;
+    console.log("token saat keluar : ", token);
+    res.cookie('token', token, { httpOnly: true, maxAge: Date.now() }); // destroy cookies
+    res.render('login', {
+        pageTitle: "Login",
+        contentTitle: "Selamat Datang"
+    });
+}
 
 exports.getData = (req, res, next) => {
     res.render('admin-pages-data', {

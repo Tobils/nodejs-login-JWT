@@ -17,7 +17,7 @@ module.exports.isUserAuthorized = function(req, res, next) {
         if (cb) {
             let privateKEY = fs.readFileSync(process.env.private_key, 'utf-8');
             let token = jwt.sign({ username }, privateKEY, {
-                algorithm: "HS256",
+                algorithm: "RS256",
                 expiresIn: jwtExpireSeconds
             });
 
@@ -46,8 +46,8 @@ module.exports.isTokenAuthorized = function(req, res, next) {
         }
         var payload;
         try {
-            let privateKEY = fs.readFileSync(process.env.private_key, 'utf-8');
-            payload = jwt.verify(token, privateKEY, { algorithm: "H256" });
+            let publicKEY = fs.readFileSync(process.env.public_key, 'utf-8');
+            payload = jwt.verify(token, publicKEY, { algorithm: "RS256" });
             console.log("username payload : ", payload);
             req.username = payload.username;
             return next();
@@ -79,33 +79,10 @@ module.exports.isTokenAuthorized = function(req, res, next) {
 }
 
 
-function refresh_token() {
-    const token = req.body.token;
-
+module.exports.isLogOut = (req, res, next) => {
+    var token = req.cookies['token'];
     if (!token) {
-        return res.status(401).end()
+        req.token = token;
     }
-
-    var payload;
-    try {
-        payload = jwt.verify(token, jwtKey);
-    } catch (error) {
-        if (error instanceof jwt.JsonWebTokenError) {
-            return res.status(401).end();
-        }
-        return res.status(400).end();
-    }
-
-    const nowUnixSeconds = Math.round(Number(new Date()) / 1000);
-    if (payload.exp - nowUnixSeconds > 30) {
-        return res.status(400).end();
-    }
-    // now, create new token for current user 
-    const newToken = jwt.sign({ username: payload.username }, jwtKey, {
-        algorithm: 'HS256',
-        expiresIn: jwtExpireSeconds
-    });
-
-    res.cookie('token', newToken, { maxAge: jwtExpireSeconds * 1000 });
-    res.end();
+    next();
 }
