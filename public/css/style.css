@@ -787,6 +787,13 @@ label {
     pointer-events: none;
 }
 
+li.nav-link-is-active a {
+    background: #fff;
+    color: #557daa;
+    border: none;
+    pointer-events: none;
+}
+
 
 /*CONTENTS CSS */
 

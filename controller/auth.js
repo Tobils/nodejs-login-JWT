@@ -35,44 +35,47 @@ module.exports.isUserAuthorized = function(req, res, next) {
 
 module.exports.isTokenAuthorized = function(req, res, next) {
     const token = req.cookies['token'];
-    console.log('token : ', token)
-    console.log("request path : ", req.originalUrl)
-    if (!token) {
-        return res.status(401).end()
-    }
-    var payload;
-    try {
-        let privateKEY = fs.readFileSync(process.env.private_key, 'utf-8');
-        payload = jwt.verify(token, privateKEY, { algorithm: "H256" });
-        console.log("username payload : ", payload);
-        req.username = payload.username;
-        return next();
-    } catch (e) {
-        if (e instanceof jwt.JsonWebTokenError) {
-            // if the error thrown is because the JWT is unauthorized, return a 401 error or return to login page again
-            // return res.status(401).end()
+    /**
+     * if cookies still exist let continue, if not please re-login
+     */
+    if (typeof token !== 'undefined') {
+        console.log('token : ', token)
+        console.log("request path : ", req.originalUrl)
+        if (!token) {
+            return res.status(401).end()
+        }
+        var payload;
+        try {
+            let privateKEY = fs.readFileSync(process.env.private_key, 'utf-8');
+            payload = jwt.verify(token, privateKEY, { algorithm: "H256" });
+            console.log("username payload : ", payload);
+            req.username = payload.username;
+            return next();
+        } catch (e) {
+            if (e instanceof jwt.JsonWebTokenError) {
+                // if the error thrown is because the JWT is unauthorized, return a 401 error or return to login page again
+                // return res.status(401).end()
+                return res.render('login', {
+                    pageTitle: "Login",
+                    contentTitle: "Username atau Password Salah !"
+                });
+            }
+            // otherwise, return a bad request error or return to login page again
+            // return res.status(400).end()
             return res.render('login', {
                 pageTitle: "Login",
                 contentTitle: "Username atau Password Salah !"
             });
         }
-        // otherwise, return a bad request error or return to login page again
-        // return res.status(400).end()
+    } else {
+        /**
+         * bagaimaana agar tidak perlu login setiap cookies habis, tp cukup cek token nya sajah
+         */
         return res.render('login', {
             pageTitle: "Login",
             contentTitle: "Username atau Password Salah !"
         });
     }
-}
-
-module.exports.destroyToken = function(req, res, next) {
-    let username = "logout";
-    let privateKEY = fs.readFileSync(process.env.private_key, 'utf-8');
-    let token = jwt.sign({ username }, privateKEY, {
-        algorithm: "HS256",
-        expiresIn: 1
-    });
-    next();
 }
 
 

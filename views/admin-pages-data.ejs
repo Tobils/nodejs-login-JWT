@@ -4,76 +4,29 @@
     <div class="mainContent">
         <!-- LIST FORM -->
         <div class="row filterGroup">
+            <!-- foram search document  -->
             <form action="" method="POST" class="formSearch fl">
                 <input type="text" class="inputSearch" placeholder="Search">
                 <button type="submit" class="btnSearch"><i class="fa fa-search"></i></button>
             </form>
-            <div class="areaFilter fr row">
-                <div class="boxSelect fr">
-                    <div class="titleSelect">Sort by</div>
-                    <ul class="optionSelect">
-                        <li sortIndex="0"><a href="">Alphabet</a></li>
-                        <li sortIndex="1"><a href="">Price, Ascending</a></li>
-                        <li sortIndex="2"><a href="">Price, Descending</a></li>
-                        <li sortIndex="3"><a href="">Latest</a></li>
-                    </ul>
-                </div>
-                <!--         FILTER -->
-                <div class="btnFilter fr bg-fff"><span class="fa fa-filter"></span>Filter</div>
-                <div class="boxFilter">
-                    <div class="btnFilter"><span class="fa fa-close"></span>Close</div>
-                    <!--             GROUP -->
-                    <div class="groupInput">
-                        <select name="">
-                                <option value="">Brand</option>
-                                <option value="">Brand 01</option>
-                                <option value="">Brand 02</option>
-                            </select>
-                        <select name="">
-                                <option value="">Category</option>
-                                <option value="">Category 01</option>
-                                <option value="">Category 02</option>
-                            </select>
-                        <select name="">
-                                <option value="">Author</option>
-                                <option value="">Author 01</option>
-                                <option value="">Author 02</option>
-                            </select>
-                    </div>
-                    <!--             END GROUP -->
-                    <!--             GROUP -->
-                    <div class="groupInput">
-                        <p class="titleInput">Price</p>
-                        <div id="filterPrice"></div>
-                        <div class="areaValue">
-                            <p>From</p>
-                            <input type="text" class="rangeValue">
-                            <p>To</p>
-                            <input type="text" class="rangeValue">
-                        </div>
-                    </div>
-                    <!--             END GROUP -->
-                </div>
-            </div>
         </div>
+
         <form action="" method="GET" name="listForm" class="form scrollX">
             <div class="formHeader row">
-                <h2 class="text-1 fl">Product List</h2>
-                <div class="fr">
-                    <button type="submit" class="btnSave bg-1 text-fff text-bold fr">SAVE</button>
-                    <a href="" class="btnAdd fa fa-plus bg-1 text-fff"></a>
-                </div>
+                <h2 class="text-1 fl">Document List</h2>
             </div>
             <div class="table">
+                <!-- table header  -->
                 <div class="row bg-1">
                     <div class="cell cell-50 text-center text-fff">ID</div>
                     <div class="cell cell-100 text-center text-fff">CATEGORY</div>
                     <div class="cell cell-100 text-fff">IMAGE</div>
-                    <div class="cell cell-100p text-fff">NAME</div>
-                    <div class="cell cell-100 text-center text-fff"><input type="checkbox" class="checkbox checkAll" name="statusAll" target=".status"></div>
+                    <div class="cell cell-100 text-fff">IMAGE</div>
+                    <div class="cell cell-100p text-fff">IMAGE</div>
+                    <div class="cell cell-100 text-fff">NAME</div>
                     <div class="cell cell-100 text-center text-fff">EDIT</div>
                 </div>
-                <!--   BEGIN LOOP -->
+                <!-- table value  BEGIN LOOP -->
                 <ul>
                     <li class="row">
                         <div class="cell cell-50 text-center">1111</div>
@@ -82,14 +35,7 @@
                             <a href=""><img src="http://bookstore.crunchpress.com/wp-content/uploads/2013/05/b2.jpg" alt="" width="50"></a>
                         </div>
                         <div class="cell cell-100p"><a href="">PRODUCT 01</a></div>
-                        <div class="cell cell-100 text-center">
-                            <input type="hidden" class="status" name="status" value="0">
-                            <input type="checkbox" class="btnSwitch status" name="status">
-                        </div>
-                        <div class="cell cell-100 text-center">
-                            <a href="" class="btnEdit fa fa-pencil bg-1 text-fff"></a>
-                            <a href="" class="btnRemove fa fa-remove bg-1 text-fff" onclick='return confirm("Do you really want to remove it ?")'></a>
-                        </div>
+
                     </li>
                     <li class="row">
                         <div class="cell cell-50 text-center">1111</div>
@@ -98,145 +44,11 @@
                             <a href=""><img src="http://bookstore.crunchpress.com/wp-content/uploads/2013/05/b2.jpg" alt="" width="50"></a>
                         </div>
                         <div class="cell cell-100p"><a href="">PRODUCT 01</a></div>
-                        <div class="cell cell-100 text-center">
-                            <input type="hidden" class="status" name="status" value="0">
-                            <input type="checkbox" class="btnSwitch status" name="status">
-                        </div>
-                        <div class="cell cell-100 text-center">
-                            <a href="" class="btnEdit fa fa-pencil bg-1 text-fff"></a>
-                            <a href="" class="btnRemove fa fa-remove bg-1 text-fff" onclick="return confirm('Do you really want to remove it ?')"></a>
-                        </div>
+
+
                     </li>
                 </ul>
                 <!--   END LOOP -->
-            </div>
-        </form>
-
-        <!-- CATE LIST    -->
-        <form action="" method="GET" name="listForm" class="form scrollX">
-            <div class="formHeader row">
-                <h2 class="text-1 fl">Product List</h2>
-                <div class="fr">
-                    <button type="submit" class="btnSave bg-1 text-fff text-bold fr">SAVE</button>
-                    <a href="" class="btnAdd fa fa-plus bg-1 text-fff"></a>
-                </div>
-            </div>
-            <div class="table">
-                <div class="row bg-1">
-                    <div class="cell cell-50 text-center text-fff">ID</div>
-                    <div class="cell cell-100 text-center text-fff">PARENT</div>
-                    <div class="cell cell-100p text-fff">NAME</div>
-                    <div class="cell cell-50 text-center text-fff">RANK</div>
-                    <div class="cell cell-50"><input type="checkbox" class="checkbox caretAll"></div>
-                    <div class="cell cell-100 text-center text-fff">EDIT</div>
-                </div>
-                <!--    BEGIN LOOP -->
-                <ul>
-                    <li class="row">
-                        <div class="cell cell-50 text-center">1</div>
-                        <div class="cell cell-100 text-center">0</div>
-                        <div class="cell cell-100p"><a href="">CATE 1</a></div>
-                        <div class="cell cell-50 text-center"><input type="number" name="rank[]" class="inputNumber"></div>
-                        <div class="cell cell-50 text-center"><span class="fa fa-caret-down btnCaret"></span></div>
-                        <div class="cell cell-100 text-center">
-                            <a href="" class="btnEdit fa fa-pencil bg-1 text-fff"></a>
-                            <a href="" class="btnRemove fa fa-remove bg-1 text-fff" onclick='return confirm("Do you really want to remove it ?")'></a>
-                        </div>
-                        <ul class="sublist">
-                            <li class="row">
-                                <div class="cell cell-50 text-center">ID</div>
-                                <div class="cell cell-100 text-center">PARENT</div>
-                                <div class="cell cell-100p"><a href="">PRODUCT 2</a></div>
-                                <div class="cell cell-50 text-center"><span class="fa fa-caret-down btnCaret"></span></div>
-                                <div class="cell cell-100 text-center">
-                                    <a href="" class="btnEdit fa fa-pencil bg-1 text-fff"></a>
-                                    <a href="" class="btnRemove fa fa-remove bg-1 text-fff" onclick='return confirm("Do you really want to remove it ?")'></a>
-                                </div>
-                                <ul class="sublist">
-                                    <li>
-                                        <div class="cell cell-50 text-center">ID</div>
-                                        <div class="cell cell-100 text-center">PARENT</div>
-                                        <div class="cell cell-100p"><a href="">PRODUCT 2</a></div>
-                                        <div class="cell cell-50"></div>
-                                        <div class="cell cell-100 text-center">
-                                            <a href="" class="btnEdit fa fa-pencil bg-1 text-fff"></a>
-                                            <a href="" class="btnRemove fa fa-remove bg-1 text-fff" onclick='return confirm("Do you really want to remove it ?")'></a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-                <!--    END LOOP -->
-            </div>
-        </form>
-
-        <!-- DETAIL FORM -->
-        <form action="" method="POST" enctype="multipart/form-data" class="form">
-            <div class="formHeader row">
-                <h2 class="text-1 fl">Product Detail</h2>
-                <div class="fr">
-                    <button type="submit" class="btnSave bg-1 text-fff text-bold fr">SAVE</button>
-                    <a href="" class="btnAdd fa fa-plus bg-1 text-fff"></a>
-                </div>
-            </div>
-            <div class="formBody row">
-                <div class="column s-6">
-                    <label class="inputGroup">
-                            <span>Name</span>
-                            <span><input type="text" name="name"></span>
-                        </label>
-                    <label class="inputGroup">
-                            <span>Code</span>
-                            <span><input type="text" name="code"></span>
-                        </label>
-                    <label class="inputGroup">
-                            <span>Price</span>
-                            <span><input type="text" name="price"></span>
-                        </label>
-                    <label class="inputGroup">
-                            <span>Note</span>
-                            <span><input type="text" name="note"></span>
-                        </label>
-                </div>
-                <div class="column s-6">
-                    <label class="inputGroup">
-                            <span>Category</span>
-                            <span>
-                                <select name="cate">
-                                    <option value="cate01">Category01</option>
-                                    <option value="cate02">Category02</option>
-                                </select>
-                                <i class="btnNewInput fa fa-plus bg-1 text-fff"></i>
-                            </span>
-                        </label>
-                    <label class="inputGroup hide">
-                            <span>Brand</span>
-                            <span>
-                                <input type="text" name="cate">
-                                <select name="brand">
-                                    <option value="cate01">Brand01</option>
-                                    <option value="cate02">Brand02</option>
-                                </select>
-                            </span> 
-                        </label>
-                    <label class="inputGroup">
-                            <span>Image</span>
-                            <input type="hidden" name="img" value="src">
-                            <span>
-                                <input type="file" name="img" onchange="getImg(this)" multiple>
-                                <img src="http://bookstore.crunchpress.com/wp-content/uploads/2013/05/b2.jpg" alt="" width="50">
-                            </span>
-                            
-                        </label>
-                </div>
-                <div class="column">
-                    <label class="inputGroup">
-                          <span>Description</span>
-                          <textarea name="description"></textarea>
-                      </label>
-                </div>
             </div>
         </form>
 

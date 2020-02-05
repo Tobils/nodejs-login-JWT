@@ -1,16 +1,19 @@
-const jwtExpireSeconds = 300;
+const cookiesExpiredSeconds = 300;
 
+// clear cookies at first visit/logout
 exports.getLogin = (req, res, next) => {
+    res.cookie('no-token', { expires: Date.now() });
     res.render('login', {
         pageTitle: "Login",
-        contentTitle: "Selamat Datang"
+        contentTitle: "Selamat Datang",
+        path: '/'
     });
 }
 
 
 exports.postLogin = (req, res, next) => {
     const token = req.token;
-    res.cookie('token', token, { httpOnly: true, maxAge: jwtExpireSeconds * 1000 });
+    res.cookie('token', token, { httpOnly: true, maxAge: cookiesExpiredSeconds * 1000 });
     res.render('admin-pages-data', {
         pageTitle: "Data",
         userName: req.username,
